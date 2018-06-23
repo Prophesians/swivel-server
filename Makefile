@@ -23,12 +23,9 @@ all_test_report = $(out_test_path)/all.func.txt
 all_test_report_html = $(out_test_path)/all.func.html
 minimum_coverage_percent := $(ENV_MIN_COVERAGE)
 
-build: test fmt build
+build: test generate
 
 generate:
-	@echo "Building windows executable $@"
-	@GOOS=windows GOARCH=amd64 go build -o $(BINARY_WINDOWS) ./$(apps_folder)/$* 
-	chmod 755 $(BINARY_WINDOWS)
 	@echo "Building darwin executable $@"
 	@GOOS=darwin GOARCH=amd64 go build -o $(BINARY_DARWIN) ./$(apps_folder)/$*
 	chmod 755 $(BINARY_DARWIN)
@@ -37,7 +34,7 @@ generate:
 	chmod 755 $(BINARY_LINUX)
 
 test:
-	$(GOTEST) -v ./...
+	$(GOTEST) -cover -v ./...
 
 clean:
 	@echo "Cleaing the output folders"
@@ -47,15 +44,6 @@ clean:
 run:
 	$(GORUN) $(apps_folder)/main.go
 
-fmt:
-	@echo "Checking formatting of go sources"
-	@result=$$(gofmt -d -l -e $(top_package_names) 2>&1); \
-		if [[ "$$result" ]]; then \
-			echo "$$result"; \
-			echo 'gofmt failed!'; \
-			exit 1; \
-		fi
-
 .PHONY: fixfmt
 fixfmt:
 	@echo "Fixing format of go sources"
@@ -64,6 +52,3 @@ fixfmt:
 		    echo "gofmt failed! (exit-code: '$$?')"; \
 		    exit 1; \
 		fi
-
-coverage:
-	$(GOTEST) -cover -v ./...

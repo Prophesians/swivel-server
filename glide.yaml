@@ -2,3 +2,5 @@ package: github.com/Prophesians/swivel-server
 import:
 - package: github.com/urfave/negroni
   version: ^0.3.0
+- package: github.com/gorilla/mux
+  version: v1.6.2
