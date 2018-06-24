@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/urfave/negroni"
 	"net/http"
-	"github.com/Prophesians/swivel-server/handlers"
+	"gitlab.com/Prophesians/swivel-server/handlers"
 )
 
 func main() {
