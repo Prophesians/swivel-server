@@ -5,3 +5,5 @@ import:
 - package: github.com/gorilla/mux
   version: v1.6.2
 - package: github.com/lib/pq
+- package: github.com/tkanos/gonfig
+  version: "1.0"
