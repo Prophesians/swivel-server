@@ -9,9 +9,9 @@ func Router() http.Handler {
 	router := mux.NewRouter()
 	swivelServerHandler := SwivelServerHandler{}
 
-	router.HandleFunc("/", swivelServerHandler.IsAlive()).Methods("GET")
-	router.HandleFunc("/topics", swivelServerHandler.GetTopics()).Methods("GET")
-	router.HandleFunc("/tags", swivelServerHandler.SaveTags()).Methods("POST")
+	router.HandleFunc("/api", swivelServerHandler.IsAlive()).Methods("GET")
+	router.HandleFunc("/api/{user_id}/articles", swivelServerHandler.GetArticles()).Methods("GET")
+	router.HandleFunc("/api/tags", swivelServerHandler.SaveTags()).Methods("POST")
 
 	return router
 }
