@@ -10,7 +10,7 @@ func Router() http.Handler {
 	swivelServerHandler := SwivelServerHandler{}
 
 	router.HandleFunc("/", swivelServerHandler.IsAlive()).Methods("GET")
-	router.HandleFunc("/news", swivelServerHandler.GetNews()).Methods("GET")
+	router.HandleFunc("/topics", swivelServerHandler.GetTopics()).Methods("GET")
 	router.HandleFunc("/tags", swivelServerHandler.SaveTags()).Methods("POST")
 
 	return router
