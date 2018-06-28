@@ -8,6 +8,8 @@ Postgres
 
 ## Step to install
 
+Install goose for DB migrations
+``go get -u github.com/pressly/goose/cmd/goose``
 
 Install glide
 ``curl https://glide.sh/get | sh``
@@ -20,6 +22,12 @@ Build -> Builds are created in out folder
 
 Run Tests
 ``make test ``
+
+Run DB Migrations up
+``make goose up``
+
+Run DB Migrations down
+``make goose down``
 
 TODO:
 
