@@ -24,10 +24,13 @@ Run Tests
 ``make test ``
 
 Run DB Migrations up
-``make goose up``
+``make gooseup``
 
 Run DB Migrations down
-``make goose down``
+``make goosedown``
+
+Run DB Migrations reset
+``make goosereset``
 
 TODO:
 
