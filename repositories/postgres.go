@@ -11,7 +11,8 @@ type Repository struct {
 }
 
 func generateDBString(config *config.AppConfig) string{
-	return fmt.Sprintf("host=%s dbname=%s user=%s password=%s search_path=%s sslmode=disable")
+	DBString := "host=%s dbname=%s user=%s password=%s search_path=%s sslmode=disable"
+	return fmt.Sprintf(DBString, config.Host, config.DBName, config.User, config.Password, config.Search_Path)
 }
 
 func GetRepository(config *config.AppConfig) (Repository, error) {
