@@ -23,7 +23,7 @@ all_test_report = $(out_test_path)/all.func.txt
 all_test_report_html = $(out_test_path)/all.func.html
 minimum_coverage_percent := $(ENV_MIN_COVERAGE)
 
-build: test generate
+build: test cover generate
 
 generate:
 	@echo "Building darwin executable $@"
@@ -34,7 +34,7 @@ generate:
 	chmod 755 $(BINARY_LINUX)
 
 test:
-	$(GOTEST) -cover -v ./...
+	$(GOTEST) -cover ./...
 
 clean:
 	@echo "Cleaing the output folders"
@@ -43,6 +43,9 @@ clean:
 
 run:
 	$(GORUN) $(apps_folder)/main.go
+
+cover:
+	./generateTotalCoverage.sh
 
 gooseup:
 	cd ./db/migrations && goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" up

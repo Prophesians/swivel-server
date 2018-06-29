@@ -11,13 +11,13 @@ type Repository struct {
 	DB *sql.DB
 }
 
-func generateDBString(config *config.AppConfig) string{
+func GenerateDBString(config *config.AppConfig) string{
 	DBString := "host=%s dbname=%s user=%s password=%s search_path=%s port=%d sslmode=disable"
 	return fmt.Sprintf(DBString, config.Host, config.DBName, config.User, config.Password, config.Search_Path, config.DBPort)
 }
 
 func GetRepository(config *config.AppConfig) (Repository, error) {
-	connStr := generateDBString(config)
+	connStr := GenerateDBString(config)
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		fmt.Println("Error while creating database connection:", err)

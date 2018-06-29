@@ -25,6 +25,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Error :", err)
 	}
+	defer repository.DB.Close()
 	err = repository.Ping()
 	if err != nil {
 		log.Fatal("Error :", err)
