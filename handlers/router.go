@@ -12,7 +12,7 @@ func Router(appContext *context.AppContext) http.Handler {
 
 	router.HandleFunc("/api", swivelServerHandler.IsAlive()).Methods("GET")
 	router.HandleFunc("/api/{user_id}/articles", swivelServerHandler.GetArticles()).Methods("GET")
-	//router.HandleFunc("/api/savetags/{user_id}", swivelServerHandler.SaveTags()).Methods("POST")
+	router.HandleFunc("/api/tags", swivelServerHandler.SaveTags(appContext)).Methods("POST")
 
 	return router
 }
