@@ -24,6 +24,8 @@ type response struct {
 
 func (ssh *SwivelServerHandler) IsAlive() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 		fmt.Fprintf(w, "I am alive")
 	}
 }
@@ -69,6 +71,8 @@ func (ssh *SwivelServerHandler) GetArticles() http.HandlerFunc {
 			return
 		}
 
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(js)
 	}
@@ -92,5 +96,9 @@ func (ssh *SwivelServerHandler) SaveTags(context *context.AppContext) http.Handl
 			fmt.Println("Error while saving the tags to Database", err)
 			http.Error(w, "Service error", 500)
 		}
+
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		w.WriteHeader(200)
 	}
 }
