@@ -4,5 +4,6 @@
   "DBName": "swivel",
   "User": "swiveldev",
   "Password": "swiveldev",
-  "Search_Path": "swivelserver"
+  "Search_Path": "swivelserver",
+  "DBPort": 6432
 }

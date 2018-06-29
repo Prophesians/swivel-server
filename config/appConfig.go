@@ -9,6 +9,7 @@ type AppConfig struct {
 	User string
 	Password string
 	Search_Path string
+	DBPort int
 }
 
 func GetConfig(filePath string) (*AppConfig, error) {

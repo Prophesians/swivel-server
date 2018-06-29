@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"gitlab.com/Prophesians/swivel-server/config"
 	"fmt"
+	_ "github.com/lib/pq"
 )
 
 type Repository struct {
@@ -11,8 +12,8 @@ type Repository struct {
 }
 
 func generateDBString(config *config.AppConfig) string{
-	DBString := "host=%s dbname=%s user=%s password=%s search_path=%s sslmode=disable"
-	return fmt.Sprintf(DBString, config.Host, config.DBName, config.User, config.Password, config.Search_Path)
+	DBString := "host=%s dbname=%s user=%s password=%s search_path=%s port=%d sslmode=disable"
+	return fmt.Sprintf(DBString, config.Host, config.DBName, config.User, config.Password, config.Search_Path, config.DBPort)
 }
 
 func GetRepository(config *config.AppConfig) (Repository, error) {
