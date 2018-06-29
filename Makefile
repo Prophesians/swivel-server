@@ -45,13 +45,13 @@ run:
 	$(GORUN) $(apps_folder)/main.go
 
 gooseup:
-	goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" up
+	cd ./db/migrations && goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" up
 
 goosedown:
-	goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" down
+	cd ./db/migrations && goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" down
 
 goosereset:
-	goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" reset
+	cd ./db/migrations && goose postgres "user=swiveldev dbname=swivel user=swiveldev sslmode=disable port=6432 password=swiveldev" reset
 
 .PHONY: fixfmt
 fixfmt:
